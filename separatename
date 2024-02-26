@@ -1,0 +1,19 @@
+lead = zoho.crm.getRecordById("Leads",leadId);
+sobrenome_old = lead.get("Last_Name");
+info sobrenome_old;
+if(sobrenome_old.contains(" ") == true)
+{
+	info "Tem nome e Sobrenome";
+	nome = sobrenome_old.getPrefix(" ");
+	sobrenome = sobrenome_old.getSuffix(" ");
+}
+else
+{
+	nome = sobrenome_old;
+	sobrenome = "null";
+}
+mapa = Map();
+mapa.put("First_Name",nome);
+mapa.put("Last_Name",sobrenome);
+update = zoho.crm.updateRecord("Leads",leadId,mapa);
+info update;
